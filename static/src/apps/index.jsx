@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout,Breadcrumb} from 'antd'
 import {getApprovedArticleDataApi} from './../api/get-article-data.js';
-import DisplayTable from './../components/index-table'
+import DisplayTable from './../components/index-table/index-table'
 import {Table} from 'react-bootstrap';
 
 
