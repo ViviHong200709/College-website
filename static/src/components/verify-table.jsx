@@ -36,6 +36,7 @@ class App extends React.Component {
             <th width="30%">内容</th>
             <th>状态</th>
             <th>操作</th>
+            <th>链接</th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +66,9 @@ class App extends React.Component {
                   <Button onClick={this.handleReject.bind(this,el.id)}>
                     驳回
                   </Button>
+                </td>
+                <td>
+                  {el.src}
                 </td>
               </tr>);
             })

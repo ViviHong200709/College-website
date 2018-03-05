@@ -1,6 +1,4 @@
 import React from 'react'
-// import { Form,Upload, Icon, Input, Button, Checkbox, message } from 'antd';
-// import {Upload,Icon} from 'antd'
 import {
   Form,
   FormGroup,
@@ -10,14 +8,14 @@ import {
   FieldGroup,
   Row,
   Col,
-  Glyphicon
+  Input,
+  Label
 } from 'react-bootstrap'
 import Request from './../utils/request'
 import {uploadApi} from './../api/upload';
-//
-// const FormItem = Form.Item;
 
-// const SignInForm = Form.create()(React.createClass({
+import upload from '../utils/upload.js'
+
 class SignInForm extends React.Component {
   constructor(props){
     super(props);
@@ -31,26 +29,32 @@ class SignInForm extends React.Component {
       let result = await uploadApi( values )
       if ( result && result.success === true ) {
         console.log('申请成功');
-        // message.success( '申请成功' )
          signInForm( values )
       } else if ( result && result.message ){
         console.error(result.message);
-        // message.error( result.message )
       }
     } else {
       console.error( '系统繁忙，稍后再试！' );
-      // message.error( '系统繁忙，稍后再试！' )
     }
   }
 
 
-  getFormValues(e) {
+   getFormValues(e) {
     let form = e.target.elements;
     let title = form.title.value;
     let description = form.description.value;
     let author = form.author.value;
     let content=form.content.value;
-    let formModel={title,description,author,content};
+    let file = this.fileUpload.files[0];
+    upload({'file':file});
+    let filename= file.name;
+
+    // let fileReader= new FileReader();
+    // fileReader.onload=(e)=>{
+    //   console.log('fileReader:',fileReader);
+    // }
+    // let readFinish =  fileReader.readAsText(file);
+    let formModel={title,description,author,content,filename};
     return formModel;
   }
 
@@ -93,20 +97,16 @@ class SignInForm extends React.Component {
         </Col>
       </FormGroup>
 
-      <FormGroup>
-        {/* <Button bsSize="large"><Glyphicon glyph="star" /> Star</Button> */}
+      <FormGroup className="row">
         <Col componentClass={ControlLabel} md={1}>
           附件
         </Col>
         <Col md={3}>
-          <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
+          <input
+            type='file' label='Upload'
+             ref={(ref) => this.fileUpload = ref}
+          />
         </Col>
-        {/* <Upload > */}
-          {/* <Button type="submit"> */}
-            {/* <Icon type="upload"/>
-            Click to Upload */}
-          {/* </Button> */}
-        {/* </Upload> */}
       </FormGroup>
 
       <FormGroup className="row">
@@ -119,53 +119,6 @@ class SignInForm extends React.Component {
       </FormGroup>
 
     </Form>);
-    // <div style={{ width: "280px", margin: "0 auto" }}>
-    //    <Form onSubmit={this.handleSubmit} className="login-form">
-    //    <FormItem style={{marginBottom:"15px"}}>
-    //      {getFieldDecorator('title', {
-    //        rules: [{ required: true}],
-    //      })(
-    //        <div>标题<Input type="text" name="title" /></div>
-    //      )}
-    //     </FormItem>
-    //     <FormItem style={{marginBottom:"15px"}}>
-    //       {getFieldDecorator('description', {
-    //         rules: [{ required: true}],
-    //       })(
-    //         <div>简介<Input type="text" name="description" /><br/></div>
-    //       )}
-    //     </FormItem>
-    //     <FormItem style={{marginBottom:"15px"}}>
-    //       {getFieldDecorator('author', {
-    //         rules: [{ required: true}],
-    //       })(
-    //         <div>作者<Input type="text" name="author" /><br/></div>
-    //       )}
-    //     </FormItem>
-    //     <FormItem style={{marginBottom:"15px"}}>
-    //       {getFieldDecorator('content', {
-    //         rules: [{ required: true}],
-    //       })(
-    //         <div>正文<textarea name="content"></textarea><br/></div>
-    //       )}
-    //     </FormItem>
-    //     <FormItem style={{marginBottom:"15px"}}>
-    //       <Upload >
-    //         <Button type="submit">
-    //           <Icon type="upload" /> Click to Upload
-    //         </Button>
-    //       </Upload>
-    //     </FormItem>
-    //     <FormItem>
-    //     <Button
-    //       type="primary"
-    //       htmlType="submit"
-    //     >
-    //       上传
-    //     </Button>
-    //   </FormItem>
-    //   </Form>
-    // </div>);
   }
 }
 export default SignInForm
