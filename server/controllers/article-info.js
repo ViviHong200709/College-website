@@ -55,6 +55,7 @@ module.exports = {
        */
   async uploadData(ctx) {
     let formData = ctx.request.body
+    // console.log('formData：',formData);
     let result = {
       success: false,
       message: '',
@@ -66,6 +67,29 @@ module.exports = {
 
     ctx.body=uploadResult;
   },
+
+
+/**
+     * 上传文件列表
+     *@param {object} ctx 上下文对象
+     */
+ fileUploadData(ctx) {
+  console.log('ctx.request:',ctx.request);
+  let formData = ctx.request.body
+  console.log('formData',formData);
+  // console.log(formData.get('files'));
+  let result = {
+    success: false,
+    message: '',
+    data: null,
+    code: ''
+  }
+  // let uploadResult = await articleInfoService.uploadData(formData)
+  // console.log('uploadResult:',uploadResult);
+
+  ctx.body=result;
+},
+
 
   /**
        * 批准当前文章

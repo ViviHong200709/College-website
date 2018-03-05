@@ -1,3 +1,4 @@
+
 const dbUtils = require('./../utils/db-util')
 
 const article = {
@@ -15,7 +16,8 @@ const article = {
       'author',
       'content',
       'status',
-      'post_time'
+      'post_time',
+      'src'
     ])
     if (Array.isArray(result) && result.length > 0) {
       console.log(result);

@@ -20,6 +20,7 @@ const article = {
       'description': formData.description,
       'author':formData.author,
       'content':formData.content,
+      'src':formData.file,
       'status':'unapproved'
     });
     return resultData
