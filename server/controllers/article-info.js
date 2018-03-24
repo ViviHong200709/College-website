@@ -1,5 +1,4 @@
 const articleInfoService = require('./../services/article-info')
-// const articleCode = require('./../codes/article')
 
 module.exports = {
 
@@ -54,42 +53,14 @@ module.exports = {
        *@param {object} ctx 上下文对象
        */
   async uploadData(ctx) {
-    let formData = ctx.request.body
-    // console.log('formData：',formData);
-    let result = {
-      success: false,
-      message: '',
-      data: null,
-      code: ''
-    }
+    let formData = ctx.req.body;
+    let filename = ctx.req.file.filename
+    formData.src = filename
     let uploadResult = await articleInfoService.uploadData(formData)
-    console.log('uploadResult:',uploadResult);
-
-    ctx.body=uploadResult;
+    if (uploadResult) {
+      ctx.redirect('/upload_success');
+    }
   },
-
-
-/**
-     * 上传文件列表
-     *@param {object} ctx 上下文对象
-     */
- fileUploadData(ctx) {
-  let formData = ctx.request.body
-  // console.log(Object.getPrototypeOf(formData));
-  console.log('formData',formData);
-  console.log('path',ctx.request.body.files);
-  let result = {
-    success: false,
-    message: '',
-    data: null,
-    code: ''
-  }
-  // let uploadResult = await articleInfoService.uploadData(formData)
-  // console.log('uploadResult:',uploadResult);
-
-  ctx.body=result;
-},
-
 
   /**
        * 批准当前文章
