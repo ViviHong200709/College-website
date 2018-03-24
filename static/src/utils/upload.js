@@ -8,6 +8,7 @@ function requestEvent( options ) {
 
       if ( xhr.readyState === 4 && xhr.status === 200 ) {
         options.success(JSON.parse(xhr.responseText))
+        console.log('xhr.responseText',xhr.responseText);
       }
     }
 
@@ -17,9 +18,11 @@ function requestEvent( options ) {
       let per = Math.floor(100 * loaded / tot)
       options.progress(per)
     }
-    xhr.open('post', '/api/article/fileupload.json')
-    console.log('requestEvent:',formData.get('files'));
-    xhr.send(formData.get('files'))
+    xhr.open('post', '/api/fileupload.json')
+    // console.log('requestEvent:',formData.get('files'));
+    // xhr.send();
+    console.log(formData.get('file'));
+    xhr.send(formData.get('file'))
     // xhr.send(formData)
   } catch ( err ) {
     options.fail(err)
@@ -34,7 +37,7 @@ function emitEvent ( options ){
   // input.setAttribute('name', 'files')
   //
   // input.click()
-  formData.append('files', options.file)
+  formData.append('file',options)
   requestEvent({
     formData,
     success: options.success,

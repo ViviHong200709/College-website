@@ -49,24 +49,6 @@ class HeaderNav extends React.Component {
   }
 
   render() {
-    const signOutBtn = {
-      position: 'absolute',
-      right: '80px',
-      top: '0px',
-      height: '39px'
-    };
-    const signInBtn = {
-      position: 'absolute',
-      right: '150px',
-      top: '0px',
-      height: '39px'
-    };
-    const welcome = {
-      position: 'absolute',
-      right: '150px',
-      top: '0px',
-      lineHeight: '39px'
-    };
     return (<div className="row" style={{borderBottom:"solid 1px #ccc"}}>
       <Col md={12}>
         <Nav bsStyle="tabs" activeKey={this.state.active} onSelect={this.getActiveKey.bind(this)} style={{border:'none'}}>
@@ -84,17 +66,6 @@ class HeaderNav extends React.Component {
           </NavItem>
         </Nav>
       </Col>
-      {/* <Col md={4} style={{fontSize:'16px',lineHeight:'39px',height:'39px'}}>
-        <div style={{textAlign:'center'}}>
-          {
-            this.props.userName
-            ? <div >欢迎你,{this.props.userName} <Button bsStyle="link" onClick={this.handleLogOut}>注销</Button></div>
-            : <Button bsStyle="primary" onClick={this.handleLogin}>
-              登录
-            </Button>
-          }
-        </div>
-      </Col> */}
     </div>);
 
   }

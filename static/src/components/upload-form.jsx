@@ -13,7 +13,6 @@ import {
 } from 'react-bootstrap'
 import Request from './../utils/request'
 import {uploadApi} from './../api/upload';
-
 import upload from '../utils/upload.js'
 
 class SignInForm extends React.Component {
@@ -46,21 +45,15 @@ class SignInForm extends React.Component {
     let author = form.author.value;
     let content=form.content.value;
     let file = this.fileUpload.files[0];
-    upload({'file':file});
+    upload(file);
     let filename= file.name;
-
-    // let fileReader= new FileReader();
-    // fileReader.onload=(e)=>{
-    //   console.log('fileReader:',fileReader);
-    // }
-    // let readFinish =  fileReader.readAsText(file);
     let formModel={title,description,author,content,filename};
     return formModel;
   }
 
   render() {
-    // const { getFieldDecorator } = this.props.form;
-    return (<Form  onSubmit={this.handleSubmit.bind(this)} >
+    // return (<Form  onSubmit={this.handleSubmit.bind(this)} encType="mutipart/form-data" >
+    return (<Form  method="POST" action="/api/fileupload.json" encType="mutipart/form-data" >
       <FormGroup className="row">
         <Col componentClass={ControlLabel} md={1}>
           标题
@@ -103,7 +96,7 @@ class SignInForm extends React.Component {
         </Col>
         <Col md={3}>
           <input
-            type='file' label='Upload'
+            type='file' label='Upload' name='file'
              ref={(ref) => this.fileUpload = ref}
           />
         </Col>

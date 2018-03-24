@@ -18,7 +18,9 @@ const { Content, Footer } = Layout
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state={userName:''};
+    this.state={userName:'',
+    role:''
+  };
   }
 
   componentDidMount(){
@@ -28,7 +30,7 @@ class App extends React.Component {
   async isUserLogin(){
     let result= await isUserLoginApi();
     if (result&&result.success===true) {
-      this.setState({userName:result.data.userName})
+      this.setState({userName:result.data.userName,role:result.data.role})
       console.log('result.data:',result.data);
     }
   }
@@ -37,7 +39,7 @@ class App extends React.Component {
     return (
     <div>
       <Header userName={this.state.userName}/>
-      <Nav userName={this.state.userName}/>
+      <Nav userName={this.state.role}/>
       <Router>
         <div>
           <Route exact path="/" component={Home}/>
