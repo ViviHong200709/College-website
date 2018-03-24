@@ -74,10 +74,10 @@ module.exports = {
      *@param {object} ctx 上下文对象
      */
  fileUploadData(ctx) {
-  console.log('ctx.request:',ctx.request);
   let formData = ctx.request.body
+  // console.log(Object.getPrototypeOf(formData));
   console.log('formData',formData);
-  // console.log(formData.get('files'));
+  console.log('path',ctx.request.body.files);
   let result = {
     success: false,
     message: '',
