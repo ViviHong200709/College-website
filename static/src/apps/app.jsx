@@ -10,6 +10,7 @@ import Home from './index.jsx';
 import Upload from './upload.jsx';
 import Verify from './verify.jsx';
 import Check from './check.jsx';
+import UploadSuccess from './upload-success.jsx';
 
 import 'antd/lib/layout/style/css'
 
@@ -46,6 +47,7 @@ class App extends React.Component {
           <Route path='/upload' component={Upload}/>
           <Route path='/verify' component={Verify}/>
           <Route path='/check' component={Check}/>
+          <Route path='/upload_success' component={UploadSuccess}/>
         </div>
       </Router>
       <FooterCommon />

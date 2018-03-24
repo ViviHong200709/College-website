@@ -53,7 +53,8 @@ class SignInForm extends React.Component {
 
   render() {
     // return (<Form  onSubmit={this.handleSubmit.bind(this)} encType="mutipart/form-data" >
-    return (<Form  method="POST" action="/api/fileupload.json" encType="mutipart/form-data" >
+    return (
+      <Form  method="POST" action="/api/article/fileupload.json"  encType="multipart/form-data">
       <FormGroup className="row">
         <Col componentClass={ControlLabel} md={1}>
           标题
@@ -97,7 +98,7 @@ class SignInForm extends React.Component {
         <Col md={3}>
           <input
             type='file' label='Upload' name='file'
-             ref={(ref) => this.fileUpload = ref}
+             // ref={(ref) => this.fileUpload = ref}
           />
         </Col>
       </FormGroup>
@@ -111,7 +112,8 @@ class SignInForm extends React.Component {
         </Col>
       </FormGroup>
 
-    </Form>);
+    </Form>
+  );
   }
 }
 export default SignInForm
