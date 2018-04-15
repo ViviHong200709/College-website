@@ -10,9 +10,9 @@ class App extends React.Component {
 
   }
 
-  handleLogin() {
-    window.location.href = "/login";
-  }
+  // handleLogin() {
+  //   window.location.href = "/login";
+  // }
 
   handleLogOut(){
     let result=signOutApi();
@@ -20,20 +20,18 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div className="container row" style={{width:'100%'}}>
-      <Col sm={3} className="logo"><img  src={logo} alt=""/></Col>
-      <Col sm={5} className="system-name">计算机学院高性能计算网站</Col>
-      <Col sm={3} className="welcome">
+    return (
+      <div className="container row" style={{width:'100%'}}>
+        <div  className="logo"><img  src={logo} alt=""/></div>
+        <div className="system-name">高性能计算网站</div>
         {
           this.props.userName
-          ? <div>欢迎你,{this.props.userName} <Button bsStyle="link" onClick={this.handleLogOut}>注销</Button></div>
-          : <Button bsStyle="primary" onClick={this.handleLogin}>
-            登录
-          </Button>
+          ? <div  className="welcome">欢迎你,{this.props.userName} <Button bsStyle="link" onClick={this.handleLogOut}>注销</Button></div>
+          : <div className="btn-login" >
+            <a href="/login">如有账号,请登陆</a>
+          </div>
         }
-      </Col>
-      {/* <Col sm={1}></Col> */}
-    </div>);
+      </div>);
   }
 }
 

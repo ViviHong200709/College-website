@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Layout, Menu, Breadcrumb} from 'antd'
-import DisplayTable from './../components/verify-table';
+import DisplayTable from './../components/verify-table/verify-table.jsx';
 import {isUserLoginApi} from './../api/validate-login.js';
 import {getAllArticleDataApi} from './../api/get-article-data';
 import {approveArticleDataApi,rejectArticleDataApi} from './../api/handle-article-data';

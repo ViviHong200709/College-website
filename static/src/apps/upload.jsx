@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout, Menu, Breadcrumb,Input } from 'antd'
-import UploadForm from './../components/upload-form.jsx'
+import UploadForm from './../components/upload-form/upload-form.jsx'
 import {isUserLoginApi} from './../api/validate-login.js'
 
 import 'antd/lib/layout/style/css'

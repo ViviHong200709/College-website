@@ -28,7 +28,7 @@ class App extends React.Component {
     $(`#up_arrow_${key}`).hide();
     let o=$(`#item_${key}`)[0];
     let w=o.offsetWidth;//获得原始宽
-    o.style.height='80px';//设置宽度
+    o.style.height='60px';//设置宽度
   }
 
   render() {
@@ -40,7 +40,8 @@ class App extends React.Component {
       );
     }
     const data = this.props.data;
-    return (<div style={{
+    return (
+      <div style={{
         background: '#fff',
         padding: 24,
         minHeight: 280
@@ -49,8 +50,8 @@ class App extends React.Component {
         {data.map((el, index) => {
           return (
             <ListGroupItem id={`item_${index}`} key={index} style={{
-                width: '800px',
-                height: '80px'
+                width: '80%',
+                height: '60px'
               }}>
               <div className="list_con">
                 <div className="title" >
@@ -74,10 +75,10 @@ class App extends React.Component {
                   </span>
                 </div>
                 <div id={`des_${index}`} style={{display:"none"}}>{el.description}</div>
-                <div className="read_num">
+                {/* <div className="read_num">
                   <p className="num">9</p>
                   <p className="text">阅读量</p>
-                </div>
+                </div> */}
               </div>
             </ListGroupItem>
           )
