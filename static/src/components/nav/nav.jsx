@@ -2,7 +2,7 @@ import React from 'react';
 import {Nav, NavItem, Button,Col} from 'react-bootstrap';
 import {isUserLoginApi} from '../../api/validate-login';
 import {signOutApi} from '../../api/sign-out';
-// import './index.css';
+import './index.less';
 class HeaderNav extends React.Component {
   constructor(props) {
     super(props);
@@ -49,23 +49,21 @@ class HeaderNav extends React.Component {
   }
 
   render() {
-    return (<div className="row" style={{borderBottom:"solid 1px #ccc"}}>
-      <Col md={12}>
+    return (<div className="row">
         <Nav bsStyle="tabs" activeKey={this.state.active} onSelect={this.getActiveKey.bind(this)} style={{border:'none'}}>
           <NavItem eventKey={1} href="/">
             主页
           </NavItem>
-          <NavItem eventKey={2} href="/upload" title="upload">
-            教师上传文件
+          <NavItem eventKey={2} href="/upload">
+            上传文件
           </NavItem>
           <NavItem eventKey={3} href="/verify">
-            管理员审核文件
+            审核文件
           </NavItem>
           <NavItem eventKey={4} href="/check">
-            领导查看文件
+            查看文件
           </NavItem>
         </Nav>
-      </Col>
     </div>);
 
   }

@@ -1,0 +1,1 @@
+proxy-revalidate：类似must-revalidate，除了只能应用于代理缓存

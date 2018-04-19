@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout, Menu, Breadcrumb } from 'antd'
-import DisplayTable from './../components/check-table.jsx';
+import DisplayTable from './../components/check-table/check-table.jsx';
 import { isUserLoginApi } from './../api/validate-login';
 import {getApprovedArticleDataApi} from './../api/get-article-data'
 import 'antd/lib/layout/style/css'
