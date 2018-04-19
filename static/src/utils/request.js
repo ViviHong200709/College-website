@@ -24,9 +24,9 @@ function fetchEvent( options ) {
       urlParams.push(_paramStr)
     }
 
-    if ( _url.indexOf('?') >= 0 ) {
-      _url = `${_url}&${urlParams.join('&')}`
-    }
+    // if ( _url.indexOf('?') >= 0 ) {
+    //   _url = `${_url}&${urlParams.join('&')}`
+    // }
     // else {
     //   _url = `${_url}?${urlParams.join('&')}`
     // }

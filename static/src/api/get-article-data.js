@@ -14,4 +14,12 @@ const getAllArticleDataApi = async (  ) => {
   return result
 }
 
-export  { getApprovedArticleDataApi,getAllArticleDataApi }
+const getArticleByUsername =async (userName)=>{
+  let result = await Request.get({
+    url: `/api/article/getArticleByUsername?username=${userName}`
+    // data:userName
+  })
+  return result
+}
+
+export  { getApprovedArticleDataApi,getAllArticleDataApi,getArticleByUsername }

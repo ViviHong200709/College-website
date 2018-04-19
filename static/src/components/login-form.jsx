@@ -18,7 +18,7 @@ class Login extends React.Component {
         // message.success( '登录成功！' )
         signInForm( values )
       } else if ( result && result.message ){
-        console.error( result.message )
+        alert( result.message )
       }
     }
     // else {
