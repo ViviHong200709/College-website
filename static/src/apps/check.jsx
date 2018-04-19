@@ -25,6 +25,7 @@ class App extends React.Component {
         this.setState({isLeaderLogin:true});
         let dataResult = await getApprovedArticleDataApi();
         this.setState({data: dataResult.data});
+        console.log('data',this.state.data);
       }
       //领导已登录
     }

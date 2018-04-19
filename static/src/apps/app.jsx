@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout} from 'antd'
-import Nav from './../components/header/nav.jsx'
+import Nav from './../components/nav/nav.jsx'
 import Header from './../components/header/header.jsx'
 import FooterCommon from './../components/footer/footer-common.jsx'
 import { BrowserRouter as Router, Route } from "react-router-dom";
