@@ -56,6 +56,7 @@ module.exports = {
     let formData = ctx.req.body;
     let filename = ctx.req.file.filename
     formData.src = filename
+    console.log('formData',formData);
     let uploadResult = await articleInfoService.uploadData(formData)
     if (uploadResult) {
       ctx.redirect('/upload_success');

@@ -39,7 +39,8 @@ const article = {
         'author',
         'content',
         'status',
-        'post_time'
+        'post_time',
+        'src',
       ],'approved')
       if (Array.isArray(result) && result.length > 0) {
         console.log(result);
