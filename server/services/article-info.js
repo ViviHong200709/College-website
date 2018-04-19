@@ -13,6 +13,10 @@ const article = {
     return resultData
   },
 
+  async getArticleByUsername(formData) {
+    let resultData = await articleModel.getArticleByUsername(formData);
+    return resultData
+  },
 
   async uploadData(formData) {
     let resultData = await articleModel.create({

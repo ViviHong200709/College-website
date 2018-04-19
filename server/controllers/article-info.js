@@ -49,6 +49,30 @@ module.exports = {
   },
 
   /**
+       * 获取指定作者文章列表
+       *@param {object} ctx 上下文对象
+       */
+  async getArticleByUsername(ctx) {
+    let url = ctx.request.url;
+    let username =url.slice(url.indexOf('=')+1);
+    let result = {
+      success: false,
+      message: 'userCode.FAIL_USER_NO_LOGIN',
+      data: null,
+      code: ''
+    }
+    let articleResult = await articleInfoService.getArticleByUsername(username);
+    if (Array.isArray(articleResult) && articleResult.length > 0) {
+      result = {
+        success: true,
+        message: '',
+        data: articleResult,
+        code: ''
+      }
+    }
+    ctx.body = result
+  },
+  /**
        * 上传文章列表
        *@param {object} ctx 上下文对象
        */
@@ -56,7 +80,6 @@ module.exports = {
     let formData = ctx.req.body;
     let filename = ctx.req.file.filename
     formData.src = filename
-    console.log('formData',formData);
     let uploadResult = await articleInfoService.uploadData(formData)
     if (uploadResult) {
       ctx.redirect('/upload_success');

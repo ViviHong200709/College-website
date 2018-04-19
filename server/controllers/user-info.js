@@ -17,17 +17,12 @@ module.exports = {
     }
 
     let userResult = await userInfoService.signIn(formData)
-
+    console.log('userResult',userResult);
     if (userResult) {
-      if (formData.userName === userResult.name) {
         result.success = true
-      } else {
-        result.message = userCode.FAIL_USER_NAME_OR_PASSWORD_ERROR
-        result.code = 'FAIL_USER_NAME_OR_PASSWORD_ERROR'
-      }
     } else {
-      result.code = 'FAIL_USER_NO_EXIST',
-      result.message = userCode.FAIL_USER_NO_EXIST
+      result.message = userCode.FAIL_USER_NAME_OR_PASSWORD_ERROR
+      result.code = 'FAIL_USER_NAME_OR_PASSWORD_ERROR'
     }
 
     if (formData.source === 'form' && result.success === true) {
@@ -36,9 +31,15 @@ module.exports = {
       session.userName = userResult.name
       session.userId = userResult.id;
       session.role = userResult.role;
-      ctx.redirect('/verify');
+      if (userResult.role=='admin') {
+        ctx.redirect('/verify');
+      }else if (userResult.role=='teacher') {
+        ctx.redirect('/upload');
+      }else if (userResult.role=='leader') {
+        ctx.redirect('/check');
+      }
     } else {
-      ctx.body = result
+      ctx.body = result;
     }
   },
 

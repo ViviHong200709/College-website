@@ -28,6 +28,7 @@ const upload = multer({storage: storage, limits: limits});
 const routers = router
   .get('/getAllArticleData', articleInfoController.getAllArticleData)
   .get('/getApprovedArticleData', articleInfoController.getApprovedArticleData)
+  .get('/getArticleByUsername',articleInfoController.getArticleByUsername)
   .post('/upload.json', articleInfoController.uploadData)
   .post('/approveArticleData.json', articleInfoController.approveArticleData)
   .post('/rejectArticleData.json', articleInfoController.rejectArticleData)

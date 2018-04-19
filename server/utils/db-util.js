@@ -65,6 +65,10 @@ let selectDataByStatus = function(table, keys, status) {
   return query(_sql, [keys, table, status])
 }
 
+let selectDataByUsername = function(table, keys, status) {
+  let _sql = "SELECT ?? FROM ?? WHERE author=? "
+  return query(_sql, [keys, table, status])
+}
 let count = function(table) {
   let _sql = "SELECT COUNT(*) AS total_count FROM ?? "
   return query(_sql, [table])
@@ -80,5 +84,6 @@ module.exports = {
   updateStatusById,
   select,
   selectDataByStatus,
+  selectDataByUsername,
   count
 }

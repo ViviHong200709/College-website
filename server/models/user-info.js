@@ -41,11 +41,10 @@ const user = {
     SELECT * from user_info
       where password="${options.password}" and name="${options.name}"
       limit 1`
-    let result = await dbUtils.query( _sql )
+    let result = await dbUtils.query( _sql );
     if ( Array.isArray(result) && result.length > 0 ) {
       result = result[0]
-      console.log(result);
-    } else {
+    } else{
       result = null
     }
     return result

@@ -49,6 +49,29 @@ const article = {
       }
       return result
     },
+
+/**
+ * 获取已审核文章信息
+ * @return {object|null}     查找结果
+ */
+  async getArticleByUsername(username) {
+    let result = await dbUtils.selectDataByUsername('article', [
+      'id',
+      'title',
+      'description',
+      'author',
+      'content',
+      'status',
+      'post_time',
+      'src',
+    ],username)
+    if (Array.isArray(result) && result.length > 0) {
+      console.log(result);
+    } else {
+      result = null
+    }
+    return result
+  },
   /**
    * 数据库创建文章
    * @param  {object} model 文章数据模型
