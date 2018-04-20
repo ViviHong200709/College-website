@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Layout, Menu, Breadcrumb} from 'antd'
-import DisplayTable from './../components/verify-table/verify-table.jsx';
+import DisplayTable from './../components/index-table/index-table.jsx';
 import {isUserLoginApi} from './../api/validate-login.js';
 import {getAllArticleDataApi} from './../api/get-article-data';
 import {approveArticleDataApi,rejectArticleDataApi} from './../api/handle-article-data';
@@ -70,7 +70,7 @@ class App extends React.Component {
                   this.state.data.length > 0
                     ? <DisplayTable data={this.state.data}
                       handleApprove={(id)=>{this.approve(id)}}
-                      handleReject={(id)=>{this.reject(id)}}/>
+                      handleReject={(id)=>{this.reject(id)}} role='admin'/>
                     : <div>暂无数据</div>
                 }
               </div>

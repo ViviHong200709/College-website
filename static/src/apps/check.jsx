@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Layout, Menu, Breadcrumb } from 'antd'
-import DisplayTable from './../components/check-table/check-table.jsx';
+// import DisplayTable from './../components/check-table/check-table.jsx';
+import DisplayTable from './../components/index-table/index-table.jsx';
 import { isUserLoginApi } from './../api/validate-login';
 import {getApprovedArticleDataApi} from './../api/get-article-data'
 import 'antd/lib/layout/style/css'
@@ -39,7 +40,7 @@ class App extends React.Component {
             <Breadcrumb.Item>Check</Breadcrumb.Item>
           </Breadcrumb>
           {(this.state.isLeaderLogin?<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            <DisplayTable data={this.state.data}/>
+            <DisplayTable data={this.state.data} role='leader'/>
           </div>:<div>leader未登录</div>)}
         </Content>
       </Layout>

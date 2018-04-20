@@ -4,7 +4,7 @@ import { Layout, Menu, Breadcrumb,Input } from 'antd'
 import UploadForm from './../components/upload-form/upload-form.jsx'
 import {isUserLoginApi} from './../api/validate-login.js'
 import {getArticleByUsername} from './../api/get-article-data';
-import DisplayTable from './../components/check-table/check-table.jsx';
+import DisplayTable from './../components/index-table/index-table.jsx';
 import 'antd/lib/layout/style/css'
 
 const { Header, Content, Footer } = Layout
@@ -40,7 +40,7 @@ class App extends React.Component {
           </Breadcrumb>
           {(this.state.isTeacherLogin)?<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
             <UploadForm />
-            <DisplayTable data={this.state.data}/>
+            <DisplayTable data={this.state.data} role='teacher'/>
           </div>:<div>teacher is not login...</div>}
         </Content>
       </Layout>
