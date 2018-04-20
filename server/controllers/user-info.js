@@ -34,7 +34,7 @@ module.exports = {
       if (userResult.role=='admin') {
         ctx.redirect('/verify');
       }else if (userResult.role=='teacher') {
-        ctx.redirect('/upload');
+        ctx.redirect('/check_own');
       }else if (userResult.role=='leader') {
         ctx.redirect('/check');
       }
