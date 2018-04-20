@@ -39,8 +39,8 @@ class App extends React.Component {
             <Breadcrumb.Item>upload</Breadcrumb.Item>
           </Breadcrumb>
           {(this.state.isTeacherLogin)?<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-              <DisplayTable data={this.state.data}/>
-            <UploadForm/>
+            <UploadForm />
+            <DisplayTable data={this.state.data}/>
           </div>:<div>teacher is not login...</div>}
         </Content>
       </Layout>

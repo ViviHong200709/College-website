@@ -20,8 +20,8 @@ class App extends React.Component {
     $(`#down_arrow_${key}`).hide();
     $(`#up_arrow_${key}`).show();
     let o = $(`#item_${key}`)[0];
-    let w = o.offsetWidth; //获得原始宽
-    o.style.height = '120px'; //设置宽度
+    // let w = o.offsetWidth; //获得原始宽
+    o.style.height=o.offsetHeight+$(`#des_${key}`).height()+'px';
   }
 
   handleUpClick(key, e) {
@@ -30,8 +30,8 @@ class App extends React.Component {
     $(`#down_arrow_${key}`).show();
     $(`#up_arrow_${key}`).hide();
     let o = $(`#item_${key}`)[0];
-    let w = o.offsetWidth; //获得原始宽
-    o.style.height = '60px'; //设置宽度
+    // let w = o.offsetWidth; //获得原始宽
+  o.style.height=o.offsetHeight-$(`#des_${key}`).height()+'px';
   }
 
   handleApprove(id, e) {
@@ -86,6 +86,9 @@ class App extends React.Component {
                     <a href="#" target="_blank">
                       {el.post_time.substring(0, 10)}
                     </a>
+                  </span>
+                  <span className="strategy">
+                    {el.status}
                   </span>
                 </div>
                 <div id={`des_${index}`} style={{

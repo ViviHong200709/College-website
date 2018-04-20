@@ -24,17 +24,14 @@ class HeaderNav extends React.Component {
       case '/':
         activeKey = 1;
         break;
-      case '/upload':
+      case 'check_own':
         activeKey = 2;
         break;
-      case 'check_own':
+      case '/verify':
         activeKey = 3;
         break;
-      case '/verify':
-        activeKey = 4;
-        break;
       case '/check':
-        activeKey = 5;
+        activeKey = 4;
         break;
       default:
 
@@ -57,16 +54,13 @@ class HeaderNav extends React.Component {
           <NavItem eventKey={1} href="/">
             主页
           </NavItem>
-          <NavItem eventKey={2} href="/upload">
-            上传文件
-          </NavItem>
-          <NavItem eventKey={3} href="/check_own">
+          <NavItem eventKey={2} href="/check_own">
             查看自己文件
           </NavItem>
-          <NavItem eventKey={4} href="/verify">
+          <NavItem eventKey={3} href="/verify">
             审核文件
           </NavItem>
-          <NavItem eventKey={5} href="/check">
+          <NavItem eventKey={4} href="/check">
             查看文件
           </NavItem>
         </Nav>

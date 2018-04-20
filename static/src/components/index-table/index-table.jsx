@@ -16,9 +16,7 @@ class App extends React.Component {
     $(`#down_arrow_${key}`).hide();
     $(`#up_arrow_${key}`).show();
     let o=$(`#item_${key}`)[0];
-    let w=o.offsetWidth;//获得原始宽
-    // console.log(o.style.height);
-    o.style.height='120px';//设置宽度
+    o.style.height=o.offsetHeight+$(`#des_${key}`).height()+'px';
   }
 
   handleUpClick(key,e){
@@ -27,8 +25,7 @@ class App extends React.Component {
     $(`#down_arrow_${key}`).show();
     $(`#up_arrow_${key}`).hide();
     let o=$(`#item_${key}`)[0];
-    let w=o.offsetWidth;//获得原始宽
-    o.style.height='60px';//设置宽度
+    o.style.height=o.offsetHeight-$(`#des_${key}`).height()+'px';
   }
 
   render() {
@@ -71,23 +68,21 @@ class App extends React.Component {
                     </a>
                   </span>
                   <span className="strategy">
-                    最新文章
+                    {el.status}
                   </span>
                 </div>
-                <div id={`des_${index}`} style={{display:"none"}}>{el.description}</div>
-                {/* <div className="read_num">
-                  <p className="num">9</p>
-                  <p className="text">阅读量</p>
-                </div> */}
+                <div id={`des_${index}`} style={{display:"none"}}>
+                  {el.description}
+                </div>
               </div>
             </ListGroupItem>
           )
         })}
 
       </ListGroup>
-      <div>
+      {/* <div>
         <Pagination bsSize="large">{items}</Pagination>
-      </div>
+      </div> */}
     </div>)
   }
 }

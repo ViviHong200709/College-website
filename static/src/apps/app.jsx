@@ -7,7 +7,6 @@ import FooterCommon from './../components/footer/footer-common.jsx'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import {isUserLoginApi} from './../api/validate-login'
 import Home from './index.jsx';
-import Upload from './upload.jsx';
 import Verify from './verify.jsx';
 import Check from './check.jsx';
 import CheckOwn from './check-own.jsx';
@@ -45,7 +44,6 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={Home}/>
-          <Route path='/upload' component={Upload}/>
           <Route path='/check_own' component={CheckOwn}/>
           <Route path='/verify' component={Verify}/>
           <Route path='/check' component={Check}/>
