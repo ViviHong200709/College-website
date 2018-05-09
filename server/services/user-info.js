@@ -9,12 +9,43 @@ const userCode = require('./../codes/user')
 const user = {
 
   /**
-   * 创建用户
+   * 录入成员数据
    * @param  {object} user 用户信息
    * @return {object}      创建结果
    */
   async create( user ) {
-    let result = await userModel.create(user)
+    let result = await userModel.create('memb_info',user)
+    return result
+  },
+
+  /**
+   * 录入成员职称
+   * @param  {object} user 用户信息
+   * @return {object}      创建结果
+   */
+  async createProfessionTitle( user ) {
+    let result = await userModel.create('profession_title',user)
+    return result
+  },
+
+
+  /**
+   * 获取成员数据
+   * @param  {object} user 用户信息
+   * @return {object}      创建结果
+   */
+  async  getMembInfo() {
+    let result = await userModel.getMembInfo()
+    return result
+  },
+
+  /**
+   * 获取成员职称数据
+   * @param  {object} user 用户信息
+   * @return {object}      创建结果
+   */
+  async  getProfessionTitle() {
+    let result = await userModel.getProfessionTitle()
     return result
   },
 
@@ -30,6 +61,8 @@ const user = {
     })
     return resultData
   },
+
+
 
   /**
    * 登录业务操作
@@ -94,6 +127,15 @@ const user = {
     result.success = true
 
     return result
+  },
+  /**
+   * 删除制定成员的信息
+   * @param  {object} userInfo 用户注册数据
+   * @return {object}          校验结果
+   */
+  async deleteMembInfo(formData){
+    let resultData = await userModel.deleteMembInfo(formData);
+    return resultData
   }
 }
 

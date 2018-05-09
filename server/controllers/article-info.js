@@ -132,5 +132,125 @@ module.exports = {
       }
       ctx.body = result;
     }
-  }
+  },
+  /**
+    *录入专利信息
+    *@param   {object} ctx 上下文对象
+    */
+    async uploadPatentData(ctx){
+      let formData=ctx.request.body;
+      let result = {
+        success: false,
+        message: '',
+        data: null
+      }
+      console.log(formData,'formData');
+
+      let patentResult = await articleInfoService.createPatent(formData)
+      if (patentResult) {
+        result.success = true
+      } else {
+        result.message = userCode.ERROR_SYS
+      }
+      ctx.body=result
+    },
+    /**
+      *录入软件著作权信息
+      *@param   {object} ctx 上下文对象
+      */
+      async uploadCopyrightData(ctx){
+        let formData=ctx.request.body;
+        let result = {
+          success: false,
+          message: '',
+          data: null
+        }
+        let copyrightResult = await articleInfoService.createCopyright(formData)
+        if (copyrightResult) {
+          result.success = true
+        } else {
+          result.message = userCode.ERROR_SYS
+        }
+        ctx.body=result
+      },
+      /**
+       * 获取所有专利信息
+       * @param    {obejct} ctx 上下文对象
+       */
+      async getPatentInfo(ctx){
+        let result = {
+          success: false,
+          message: '',
+          data: null
+        };
+        let patentInfoResult= await articleInfoService.getPatentInfo();
+        if (patentInfoResult&&patentInfoResult.length!=0) {
+          result.data=patentInfoResult;
+          result.success=true;
+        }
+        ctx.body=result;
+      },
+      /**
+       * 根据id删除专利信息
+       * @param  {obejct} ctx 上下文对象
+       */
+       async deletePatentInfo(ctx){
+         let formData = ctx.request.body
+         let result = {
+           success: false,
+           message: '',
+           data: null,
+           code: ''
+         }
+         let deleteResult = await articleInfoService.deletePatentInfo(formData);
+         if (deleteResult) {
+           result = {
+             success: true,
+             message: '',
+             data: deleteResult,
+             code: ''
+           }
+           ctx.body = result;
+         }
+       },
+       /**
+        * 获取所有软件著作权信息
+        * @param    {obejct} ctx 上下文对象
+        */
+       async getCopyrightInfo(ctx){
+         let result = {
+           success: false,
+           message: '',
+           data: null
+         };
+         let copyrightInfoResult= await articleInfoService.getCopyrightInfo();
+         if (copyrightInfoResult&&copyrightInfoResult.length!=0) {
+           result.data=copyrightInfoResult;
+           result.success=true;
+         }
+         ctx.body=result;
+       },
+       /**
+        * 根据id删除软件著作权信息
+        * @param  {obejct} ctx 上下文对象
+        */
+        async deleteCopyRightInfo(ctx){
+          let formData = ctx.request.body
+          let result = {
+            success: false,
+            message: '',
+            data: null,
+            code: ''
+          }
+          let deleteResult = await articleInfoService.deleteCopyrightInfo(formData);
+          if (deleteResult) {
+            result = {
+              success: true,
+              message: '',
+              data: deleteResult,
+              code: ''
+            }
+            ctx.body = result;
+          }
+        }
 }
