@@ -50,15 +50,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (<Layout className="layout">
-      <Content style={{
-          padding: '0 50px'
-        }}>
-        <Breadcrumb style={{
-            margin: '12px 0'
-          }}>
-          <Breadcrumb.Item>verify</Breadcrumb.Item>
-        </Breadcrumb>
+    return (<div style={{margin:'20px 40px'}}>
         {
           this.state.isAdminLogin
             ? <div style={{
@@ -76,8 +68,7 @@ class App extends React.Component {
               </div>
             : <div>管理员未登录</div>
         }
-      </Content>
-    </Layout>)
+    </div>)
   }
 }
 

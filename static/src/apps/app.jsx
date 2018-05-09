@@ -6,12 +6,20 @@ import Header from './../components/header/header.jsx'
 import FooterCommon from './../components/footer/footer-common.jsx'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import {isUserLoginApi} from './../api/validate-login'
-import Home from './index.jsx';
 import Verify from './verify.jsx';
 import Check from './check.jsx';
 import CheckOwn from './check-own.jsx';
+import UploadArticle from './../components/upload-form/upload-form.jsx'
 import UploadSuccess from './upload-success.jsx';
 
+import MembInfoInput from './../components/info-handle/memb-info-input.jsx';
+import MembInfoChange from './../components/info-handle/memb-info-change.jsx';
+import PatentInfoInput from './../components/info-handle/patent-info-input.jsx';
+import PatentInfoChange from './../components/info-handle/patent-info-change.jsx';
+import CopyrightInfoInput from './../components/info-handle/copyright-info-input.jsx';
+import CopyrightInfoChange from './../components/info-handle/copyright-info-change.jsx';
+import Introduction from './introduction.jsx';
+import InstitudeIntro from './../components/introduction/institude-intro.jsx';
 import 'antd/lib/layout/style/css'
 
 const { Content, Footer } = Layout
@@ -43,16 +51,25 @@ class App extends React.Component {
       <Nav userName={this.state.role}/>
       <Router>
         <div>
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={InstitudeIntro}/>
+          <Router>
+              <Route path="/intro" component={Introduction}/>
+          </Router>
           <Route path='/check_own' component={CheckOwn}/>
+          <Route path='/upload_article' component={UploadArticle}/>
           <Route path='/verify' component={Verify}/>
           <Route path='/check' component={Check}/>
+          <Route path='/memb_info_input' component={MembInfoInput}/>
+          <Route path='/memb_info_change' component={MembInfoChange}/>
+          <Route path='/patent_info_input' component={PatentInfoInput}/>
+          <Route path='/patent_info_change' component={PatentInfoChange}/>
+          <Route path='/copyright_info_input' component={CopyrightInfoInput}/>
+          <Route path='/copyright_info_change' component={CopyrightInfoChange}/>
           <Route path='/upload_success' component={UploadSuccess}/>
         </div>
       </Router>
       <FooterCommon />
-    </div>// <Layout className="layout">
-      // </Layout>
+    </div>
     )
   }
 }

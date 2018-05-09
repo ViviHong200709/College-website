@@ -33,17 +33,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <Layout className="layout">
-        <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '12px 0' }}>
-            <Breadcrumb.Item>upload</Breadcrumb.Item>
-          </Breadcrumb>
+      <div style={{
+        background: '#fff',
+        padding: '20px'
+      }}>
           {(this.state.isTeacherLogin)?<div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            <UploadForm />
             <DisplayTable data={this.state.data} role='teacher'/>
-          </div>:<div>teacher is not login...</div>}
-        </Content>
-      </Layout>
+          </div>:<div>教师未登录</div>}
+      </div>
     )
   }
 }
