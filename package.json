@@ -19,6 +19,7 @@
     "antd": "^2.7.2",
     "busboy": "^0.2.14",
     "co": "^4.6.0",
+    "create-react-class": "^15.6.3",
     "debug": "^2.6.0",
     "ejs": "^2.5.5",
     "koa": "^2.0.0",
@@ -37,6 +38,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^15.4.1",
     "react-router": "^4.2.0",
+    "react-select": "^1.2.1",
     "validator": "^6.2.0",
     "webpack-dev-server": "^2.11.1",
     "whatwg-fetch": "^2.0.1"
