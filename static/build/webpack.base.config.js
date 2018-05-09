@@ -12,9 +12,10 @@ module.exports = {
     vendor: ['react', 'react-dom', 'whatwg-fetch']
   },
   output: {
-    path: path.resolve(__dirname, './../output/dist/js'),
-    // publicPath: '/static/output/dist/',
-    filename: '[name].js'
+    filename: '[name].js',
+    path: path.resolve(__dirname, './../output/dist'),
+    publicPath: '/',
+    chunkFilename: '[name].js'
   },
   module: {
 
@@ -35,11 +36,6 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({fallback: "style-loader", use: ['css-loader']})
       },
-      // {
-      //   test: /\.css$/,
-      //   include: /node_modules/,
-      //   use: ['style-loader', 'css-loader']
-      // },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
@@ -73,7 +69,10 @@ module.exports = {
     new HtmlWebpackPlugin({template: './static/src/index.tmpl.html'}),
 
     new ExtractTextPlugin('css/[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({names: ['vendor'], minChunks: Infinity, filename: 'js/[name].js'})
+    new webpack.optimize.CommonsChunkPlugin({names: ['vendor'],
+     minChunks: Infinity,
+    // filename: 'js/[name].js'})
+    filename:'vendor.js'})
   ],
   devServer: {
     proxy: {
