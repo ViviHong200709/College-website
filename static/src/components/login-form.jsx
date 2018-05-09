@@ -21,9 +21,6 @@ class Login extends React.Component {
         alert( result.message )
       }
     }
-    // else {
-    //   message.error( '系统繁忙，稍后再试！' )
-    // }
   }
 
 

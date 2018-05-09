@@ -12,64 +12,69 @@ import {
   Label
 } from 'react-bootstrap'
 import $ from 'jquery'
-import Request from './../../utils/request'
-import {uploadApi} from './../../api/upload';
-import upload from '../../utils/upload.js'
+import { isUserLoginApi } from './../../api/validate-login';
+
 
 class SignInForm extends React.Component {
   constructor(props){
     super(props);
+    this.state={isTeacherLogin:false};
   }
 
-  async handleSubmit(e) {
-    e.preventDefault()
-    let values = await this.getFormValues(e)
-    console.log(values);
-    if ( values ) {
-      let result = await uploadApi( values )
-      if ( result && result.success === true ) {
-        console.log('申请成功');
-         signInForm( values )
-      } else if ( result && result.message ){
-        console.error(result.message);
+  componentDidMount(){
+    this.isTeacherLogin();
+  }
+
+  async isTeacherLogin(){
+    let result = await isUserLoginApi();
+    if(result&&result.success==true){
+      if (result.data.role==='teahcer') {
+        this.setState({isTeacherLogin:true});
       }
-    } else {
-      console.error( '系统繁忙，稍后再试！' );
+      //教师已登录
     }
+    console.log(this.state.isTeacherLogin,'isTeahcerLogin???');
   }
+  // async handleSubmit(e) {
+  //   e.preventDefault()
+  //   let values = await this.getFormValues(e)
+  //   console.log(values);
+  //   if ( values ) {
+  //     let result = await uploadApi( values )
+  //     if ( result && result.success === true ) {
+  //       console.log('申请成功');
+  //        signInForm( values )
+  //     } else if ( result && result.message ){
+  //       console.error(result.message);
+  //     }
+  //   } else {
+  //     console.error( '系统繁忙，稍后再试！' );
+  //   }
+  // }
 
-  upload(){
-    $('#uploadForm').show();
-    $('#abandonUploadBtn').show();
-    $('#uploadBtn').hide();
-  }
-  abandonUpload(){
-    $('#uploadForm').hide();
-    $('#abandonUploadBtn').hide();
-    $('#uploadBtn').show();
-  }
-   getFormValues(e) {
-    let form = e.target.elements;
-    let title = form.title.value;
-    let description = form.description.value;
-    let author = form.author.value;
-    let content=form.content.value;
-    let file = this.fileUpload.files[0];
-    upload(file);
-    let filename= file.name;
-    let formModel={title,description,author,content,filename};
-    return formModel;
-  }
+
+  //  getFormValues(e) {
+  //   let form = e.target.elements;
+  //   let title = form.title.value;
+  //   let description = form.description.value;
+  //   let author = form.author.value;
+  //   let content=form.content.value;
+  //   let file = this.fileUpload.files[0];
+  //   upload(file);
+  //   let filename= file.name;
+  //   let formModel={title,description,author,content,filename};
+  //   return formModel;
+  // }
 
   render() {
     return (
       <div style={{
         background: '#fff',
-        padding: 24
+        padding: '20px'
       }}>
-        <Button id='uploadBtn' onClick={this.upload.bind(this)}>上传文章</Button>
-        <Button id='abandonUploadBtn' onClick={this.abandonUpload.bind(this)} style={{display:'none'}}>放弃上传</Button>
-        <Form  id="uploadForm" method="POST" action="/api/article/fileupload.json"  encType="multipart/form-data" style={{display:'none'}}>
+      {this.state.isTeacherLogin==false?<div>教师未登录</div>:
+
+        <Form  id="uploadForm" method="POST" action="/api/article/fileupload.json"  encType="multipart/form-data" >
         <FormGroup className="row">
           <Col componentClass={ControlLabel} md={1}>
             标题
@@ -127,7 +132,7 @@ class SignInForm extends React.Component {
           </Col>
         </FormGroup>
 
-      </Form>
+      </Form>}
       </div>
   );
   }
