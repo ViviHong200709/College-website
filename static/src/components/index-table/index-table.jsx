@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Table, ListGroup, ListGroupItem, Pagination,Button} from 'react-bootstrap'
+import {Table, ListGroup, ListGroupItem, Pagination, Button} from 'react-bootstrap'
 import $ from 'jquery';
 import './index.css';
 import * as up from './up.png'
@@ -11,6 +11,9 @@ class App extends React.Component {
     this.state = {
       activePage: 1
     };
+  }
+
+  componentDidMount() {
   }
 
   handleDownClick(key, e) {
@@ -67,7 +70,7 @@ class App extends React.Component {
   render() {
     const data = this.props.data;
     let items = [];
-    let count = 3;
+    let count = 5;
     let pageCount = Number.parseInt(data.length / count + (
       data.length % count == 0
       ? 0
@@ -95,26 +98,43 @@ class App extends React.Component {
                       this.props.role
                         ? <a href={`/static/upload/${el.src}`}>{el.title}</a>
                         : <span>
-                          {
-                            el.title
-                          }
-                        </span>
+                            {el.title}
+                          </span>
                     }
                   </h2>
                   <img id={`down_arrow_${index}`} className="arrow" src={down} onClick={this.handleDownClick.bind(this, index)}/>
                   <img id={`up_arrow_${index}`} style={{
                       display: 'none'
-                    }} className="arrow" src={up} onClick={this.handleUpClick.bind(this, index)}/>
-                    {this.props.role=='admin'?<div className="operation">
-                      <Button bsStyle="primary" style={{
-                        marginRight: '20px'
-                      }} onClick={this.handleApprove.bind(this, el.id)}>
-                      批准
-                    </Button>
-                    <Button onClick={this.handleReject.bind(this, el.id)}>
-                      驳回
-                    </Button>
-                  </div>:null}
+                    }} className="arrow" src={up} onClick={this.handleUpClick.bind(this, index)}/> {
+                    this.props.role == 'admin'
+                      ? <div className="operation">
+                          {
+                            el.status == 'approved'
+                              ? null
+                              : <Button bsStyle="primary" style={{
+                                    marginRight: '20px'
+                                  }} onClick={this.handleApprove.bind(this, el.id)}>
+                                  批准
+                                </Button>
+                          }
+                          <Button onClick={this.handleReject.bind(this, el.id)}>
+                            驳回
+                          </Button>
+                        </div>
+                      : null
+                  }
+                  {
+                    this.props.role == 'teacher' && el.status == 'unapproved'
+                      ? <div className="operation">
+                          <Button bsStyle="primary" style={{
+                              marginRight: '20px'
+                            }}>
+                            撤销申请
+                          </Button>
+
+                        </div>
+                      : null
+                  }
                 </div>
                 <div className="list_userbar">
                   <span className="name">
