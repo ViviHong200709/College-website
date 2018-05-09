@@ -10,10 +10,6 @@ class App extends React.Component {
 
   }
 
-  // handleLogin() {
-  //   window.location.href = "/login";
-  // }
-
   handleLogOut(){
     let result=signOutApi();
     location.reload();
@@ -23,7 +19,7 @@ class App extends React.Component {
     return (
       <div className="container row" style={{width:'100%'}}>
         <div  className="logo"><img  src={logo} alt=""/></div>
-        <div className="system-name">高性能计算网站</div>
+        <div className="system-name">苏州大学高性能计算与应用研究所</div>
         {
           this.props.userName
           ? <div  className="welcome">欢迎你,{this.props.userName} <Button bsStyle="link" onClick={this.handleLogOut}>注销</Button></div>
