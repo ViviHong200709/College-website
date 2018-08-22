@@ -76,7 +76,6 @@ const article = {
       'title': formData.title,
       'description': formData.description,
       'author':formData.author,
-      'content':formData.content,
       'src':formData.src,
       'status':'unapproved'
     });

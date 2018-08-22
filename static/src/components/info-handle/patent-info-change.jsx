@@ -72,9 +72,9 @@ let values=[];
    }
 
    getFormValues(item) {
-     let id = $("input[name='id']").val();
-     let name =$("input[name='name']").val();
-     let apl_id=$("input[name='apl_id']").val();
+     let id = $(`#change_${item.id} input[name='id']`).val();
+     let name =$(`#change_${item.id} input[name='name']`).val();
+     let apl_id=$(`#change_${item.id} input[name='apl_id']`).val();
      if (!id) {
        id=item.id;
      }

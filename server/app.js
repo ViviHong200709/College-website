@@ -31,6 +31,12 @@ app.use(koaLogger())
 // 配置ctx.body解析中间件
 app.use(bodyParser())
 
+// 初始化路由中间件
+app.use(routers.routes()).use(routers.allowedMethods());
+// 监听启动端口
+app.listen( config.port )
+console.log(`the server is start at port ${config.port}`)
+
 // 配置静态资源加载中间件
 app.use(koaStatic(
   path.join(__dirname , './../static')
@@ -40,9 +46,3 @@ app.use(koaStatic(
 app.use(views(path.join(__dirname, './views'), {
   extension: 'ejs'
 }))
-
-// 初始化路由中间件
-app.use(routers.routes()).use(routers.allowedMethods());
-// 监听启动端口
-app.listen( config.port )
-console.log(`the server is start at port ${config.port}`)

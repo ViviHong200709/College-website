@@ -8,7 +8,7 @@ class App extends React.Component {
 
   componentDidMount(){
     alert('上传成功！')
-    window.location.href='/upload'
+    window.location.href='/check_own'
   }
 
   render() {

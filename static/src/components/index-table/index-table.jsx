@@ -131,7 +131,6 @@ class App extends React.Component {
                             }}>
                             撤销申请
                           </Button>
-
                         </div>
                       : null
                   }

@@ -70,7 +70,6 @@ const article = {
       'title',
       'description',
       'author',
-      'content',
       'status',
       'post_time',
       'src'
@@ -93,7 +92,6 @@ const article = {
         'title',
         'description',
         'author',
-        'content',
         'status',
         'post_time',
         'src',
@@ -116,7 +114,6 @@ const article = {
       'title',
       'description',
       'author',
-      'content',
       'status',
       'post_time',
       'src',

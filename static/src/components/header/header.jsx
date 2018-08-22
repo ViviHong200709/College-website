@@ -7,7 +7,6 @@ import './index.less';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   handleLogOut(){

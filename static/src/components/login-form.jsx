@@ -15,10 +15,9 @@ class Login extends React.Component {
     if ( values ) {
       let result = await signInApi( values )
       if ( result && result.success === true ) {
-        // message.success( '登录成功！' )
         signInForm( values )
       } else if ( result && result.message ){
-        alert( result.message )
+        alert( '认证失败')
       }
     }
   }

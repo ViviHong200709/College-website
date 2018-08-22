@@ -12,7 +12,7 @@ class App extends React.Component {
       <div className="box">
         <span className="title" >高性能计算与应用研究所</span>
       <span className="sub-title">研究所简介</span>
-      <p align="left">高性能计算的发展水平是衡量一个国家综合国力和国际竞争力的重要指标，
+      <p>高性能计算的发展水平是衡量一个国家综合国力和国际竞争力的重要指标，
         已成为世界各国竞相争夺的战略制高点。目前高性能计算在国民经济、国防建设、科学研究
         等领域的作用日益显著，已经成为继理论科学、实验科学后的第三种科学方法，已被广泛地
         应用在数字试验、数字模拟、数字仿真等方面。</p>
@@ -32,7 +32,7 @@ class App extends React.Component {
         别对应曙光集群和IBM集群，高档微机70 多台。</p>
       <span className="sub-title">主要研究方向</span>
       <span className="sm-title">一、并行体系结构与算法</span>
-      <Panel collapsible defaultExpanded header="Panel heading">
+      <Panel  defaultExpanded >
         <ListGroup fill>
           <ListGroupItem>（1）新型高性能多处理机互连结构及性能研究</ListGroupItem>
           <ListGroupItem>（2）高性能高可用并行计算系统</ListGroupItem>
@@ -41,7 +41,7 @@ class App extends React.Component {
         </ListGroup>
       </Panel>
       <span className="sm-title">二、网络与分布式计算</span>
-      <Panel collapsible defaultExpanded header="Panel heading">
+      <Panel  defaultExpanded >
         <ListGroup fill>
           <ListGroupItem>（1）无线网络</ListGroupItem>
           <ListGroupItem>（2）网络安全与可信计算</ListGroupItem>
@@ -49,7 +49,7 @@ class App extends React.Component {
           <ListGroupItem>（4）分布式系统资源管理</ListGroupItem>
         </ListGroup>
       </Panel>
-      <Panel collapsible defaultExpanded header="Panel heading">
+      <Panel  defaultExpanded >
         <span className="sm-title">三、高性能与分布式计算应用</span>
         <ListGroup fill>
           <ListGroupItem>（1）新型高性能多处理机互连结构及性能研究</ListGroupItem>
